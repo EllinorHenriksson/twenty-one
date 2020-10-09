@@ -17,7 +17,7 @@ import { PlayingCard } from './PlayingCard.js'
  */
 export class Deck {
   /**
-   * Creates an array of 52 playing cards representing a deck.
+   * Creates an array of 52 playing cards representing a deck. Hejsan!
    *
    * @returns {PlayingCard[]} An array of 52 PlayingCard objects.
    */
