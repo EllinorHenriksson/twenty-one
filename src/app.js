@@ -7,8 +7,7 @@
  * @version 1.0.0
  */
 
-// TODO: Replace the code below with your own game logic.
-
+// My logic!
 import { Deck } from './Deck.js'
 
 try {
