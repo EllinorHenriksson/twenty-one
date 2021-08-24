@@ -4,7 +4,7 @@
  * @author Johan Leitet <johan.leitet@lnu.se>
  * @author Mats Loock <mats.loock@lnu.se>
  * @author // TODO: YOUR NAME <YOUR EMAIL>
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 // TODO: Replace the code below with your own game logic.

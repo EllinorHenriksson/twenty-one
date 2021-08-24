@@ -3,7 +3,7 @@
  *
  * @author Johan Leitet <johan.leitet@lnu.se>
  * @author Mats Loock <mats.loock@lnu.se>
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 import { Ranks } from './Ranks.js'
