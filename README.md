@@ -8,7 +8,7 @@ Du kommer att ha stor frihet välja hur du vill lösa uppgiften; vilka konstrukt
 
 Några moduler finns redan skapade `src/app.js`, `src/Deck.js`, `src/PlayingCard.js`, `src/Ranks.js` och `src/Suits.js`. Beroendediagrammet visar beroendet mellan modulerna.
 
-![Beroendediagram](https://gitlab.lnu.se/1dv025/templates/assignment-a3-twenty-one/-/raw/master/.readme/dependency-graph.svg)
+![Beroendediagram](https://gitlab.lnu.se/1dv025/templates/assignment-a3-twenty-one/-/raw/main/.readme/dependency-graph.svg)
 
 Modulerna `src/Rank.js` och `src/Suit.js` exporterar objekt för korts valörer (`Ranks`) och färger (`Suits`).
 
