@@ -9,6 +9,7 @@
 
 // TODO: Replace the code below with your own game logic.
 
+/*
 import { Deck } from './Deck.js'
 
 try {
@@ -33,3 +34,15 @@ try {
 } catch (e) {
   console.error(e.message)
 }
+*/
+
+//Egna försök
+/*const argumentArray = process.argv.slice(2)
+
+const argument = argumentArray[0]
+*/
+
+import { play } from './table.js'
+
+play()
+
