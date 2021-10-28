@@ -39,6 +39,10 @@ export class Participant {
   }
 
   toString () {
-    return `${this.name}: ${this.hand.join(' ')} (${this.valueOfHand()})`
+    if (this.hand.length > 0) {
+      return `${this.name}: ${this.hand.join(' ')} (${this.valueOfHand()})`
+    } else {
+      return `${this.name}: -`
+    }
   }
 }
