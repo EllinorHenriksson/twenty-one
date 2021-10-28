@@ -21,6 +21,24 @@ export function table (numberOfPlayers = 3) {
 
   // Skapa en slänghög
   const throwPile = []
+
+  // Ge alla spelare ett kort
+  for (const player of players) {
+    player.drawCard(drawPile, throwPile)
+  }
+
+  // Skapa en sträng som konkateneras allt eftersom spelet går
+  let score = ''
+
+  // Låt alla spelare spela - FORTSÄTT HÄR!!!!!
+  for (const player of players) {
+    do {
+      player.drawCard(drawPile, throwPile)
+    } while (player.valueOfHand() <= player.stopValue)
+    if (player.valueOfHand === 21) {
+      // Konkatenera spelarens namn, hand och handens värde med score OCH konkatenera dealerns namn, hand och handens värde med score OCH konkatenera att spelaren vinner
+    }
+  }
 }
 
 // -------------------------------------------
