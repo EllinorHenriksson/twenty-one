@@ -42,7 +42,6 @@ try {
 const argument = argumentArray[0]
 */
 
-import { play } from './table.js'
+import { table } from './table.js'
 
-play()
-
+table()

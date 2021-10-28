@@ -5,14 +5,9 @@ export class Participant {
     this.name = name
     this.hand = []
     this.stopValue = Math.floor(Math.random() * 21) + 1
-    //this.getStopValue()
   }
 
-  //getStopValue () {
-    //this.stopValue = Math.floor(Math.random() * 21) + 1
-  }
-
-  drawCards (drawPile, throwPile) {
+  drawCard (drawPile, throwPile) {
     if (drawPile.length === 1) {
     // lägg över korten i slänghögen till draghögen
       const cardsToDrawPile = throwPile.splice(0)
@@ -31,5 +26,9 @@ export class Participant {
     for (const card of cardsToThrowPile) {
       throwPile.push(card)
     }
+  }
+
+  valueOfHand () {
+    return this.hand.reduce((value, playingCard) => value + playingCard, 0)
   }
 }
