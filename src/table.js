@@ -27,30 +27,42 @@ export function table (numberOfPlayers = 3) {
     player.drawCard(drawPile, throwPile)
   }
 
-  // Skapa en sträng som konkateneras allt eftersom spelet går
-  let score = ''
-
-  // Test!
-  const playerX = new Participant('Player X')
-  playerX.drawCard(drawPile, throwPile)
-  playerX.drawCard(drawPile, throwPile)
-  playerX.drawCard(drawPile, throwPile)
-  score += `${playerX.toString()}\n${dealer.toString()}\n${playerX.name} wins!\n`
-
-  console.log(score)
-
   // Låt alla spelare spela - FORTSÄTT HÄR!!!!!
-  /*
   for (const player of players) {
+    let score = ''
     do {
       player.drawCard(drawPile, throwPile)
-    } while (player.valueOfHand() <= player.stopValue)
-    if (player.valueOfHand === 21) {
-      // Konkatenera spelarens namn, hand och handens värde med score OCH konkatenera dealerns namn, hand och handens värde med score OCH konkatenera att spelaren vinner
-      score += `${player.toString()}\n${dealer.toString()}\n${player.name} wins!\n`
+    } while (player.valueOfHand() < player.stopValue || player.hand.length === 5)
+    if (player.valueOfHand() === 21 || (player.valueOfHand() < 21 && player.hand.length === 5)) {
+      // Konkatenera spelaren och dealers namn, hand och handens värde samt utrop av vinnaren med strängen score
+      score = `${player.toString()}\n${dealer.toString()}\n${player.name} wins!\n`
+    } else if (player.valueOfHand() > 21) {
+      score = `${player.toString()}\n${dealer.toString()}\n${dealer.name} wins!\n`
+    } else {
+      // Nu ska dealern spela mot spelaren
+      do {
+        dealer.drawCard(drawPile, throwPile)
+      } while (dealer.valueOfHand() < dealer.stopValue || dealer.hand.length === 5)
+      if (dealer.valueOfHand() === 21 || (dealer.valueOfHand() < 21 && dealer.hand.length === 5)) {
+        score = `${player.toString()}\n${dealer.toString()}\n${dealer.name} wins!\n`
+      } else if (dealer.valueOfHand() > 21) {
+        score = `${player.toString()}\n${dealer.toString()}\n${player.name} wins!\n`
+      } else {
+        if (dealer.valueOfHand() >= player.valueOfHand()) {
+          score = `${player.toString()}\n${dealer.toString()}\n${dealer.name} wins!\n`
+        } else {
+          score = `${player.toString()}\n${dealer.toString()}\n${player.name} wins!\n`
+        }
+      }
     }
+
+    // Visa resultatet för delomgången
+    console.log(score)
+
+    // Spelaren och dealern slänger de kort de har på handen
+    player.throwCards(throwPile)
+    dealer.throwCards(throwPile)
   }
-  */
 }
 
 // -------------------------------------------
