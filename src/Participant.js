@@ -32,9 +32,13 @@ export class Participant {
     let value = this.hand.reduce((value, playingCard) => value + playingCard, 0)
 
     if (value <= 8 && this.hand.some(playingCard => playingCard.rank === 1)) {
-      value += 14
+      value += 13
     }
 
     return value
+  }
+
+  toString () {
+    return `${this.name}: ${this.hand.join(' ')} (${this.valueOfHand()})`
   }
 }

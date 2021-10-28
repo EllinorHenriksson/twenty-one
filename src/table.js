@@ -8,7 +8,7 @@ export function table (numberOfPlayers = 3) {
   const players = []
 
   for (let i = 0; i < numberOfPlayers; i++) {
-    const name = `Player ${i + 1}`
+    const name = `Player #${i + 1}`
     players[i] = new Participant(name)
   }
 
@@ -31,6 +31,7 @@ export function table (numberOfPlayers = 3) {
   let score = ''
 
   // Låt alla spelare spela - FORTSÄTT HÄR!!!!!
+  /*
   for (const player of players) {
     do {
       player.drawCard(drawPile, throwPile)
@@ -39,6 +40,7 @@ export function table (numberOfPlayers = 3) {
       // Konkatenera spelarens namn, hand och handens värde med score OCH konkatenera dealerns namn, hand och handens värde med score OCH konkatenera att spelaren vinner
     }
   }
+  */
 }
 
 // -------------------------------------------
