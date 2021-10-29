@@ -9,12 +9,15 @@ export class Participant {
 
   drawCard (drawPile, throwPile) {
     if (drawPile.length === 1) {
-    // lägg över korten i slänghögen till draghögen
+      /// Kasta ett undantag
+      if (throwPile.length === 0) {
+        throw new Error('Too few cards in the draw pile')
+      }
+      // Lägg över korten i slänghögen till draghögen
       const cardsToDrawPile = throwPile.splice(0)
       for (const card of cardsToDrawPile) {
         drawPile.push(card)
       }
-
       // blanda korten i draghögen
       drawPile = Deck.shuffle(drawPile)
     }
