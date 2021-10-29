@@ -36,13 +36,10 @@ try {
 }
 */
 
-//Egna försök
-/*const argumentArray = process.argv.slice(2)
-
-const argument = argumentArray[0]
-*/
+// Egen kod
 
 import { table } from './table.js'
+import { CardError } from './CardError.js'
 
 const myArgs = process.argv.slice(2)
 let numberOfPlayers
@@ -57,4 +54,9 @@ try {
   table(numberOfPlayers)
 } catch (e) {
   console.error(e.message)
+  process.exitCode = 26
+
+  if (e instanceof CardError) {
+    process.exitCode = 27
+  }
 }

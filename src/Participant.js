@@ -1,4 +1,5 @@
 import { Deck } from './Deck.js'
+import { CardError } from './CardError.js'
 
 export class Participant {
   constructor (name) {
@@ -11,7 +12,7 @@ export class Participant {
     if (drawPile.length === 1) {
       /// Kasta ett undantag
       if (throwPile.length === 0) {
-        throw new Error('Too few cards in the draw pile')
+        throw new CardError('Too few cards in the draw pile')
       }
       // Lägg över korten i slänghögen till draghögen
       const cardsToDrawPile = throwPile.splice(0)
