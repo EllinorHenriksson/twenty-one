@@ -3,7 +3,7 @@ import { Deck } from './Deck.js'
 
 // Sätt igång spelet
 
-export function table (numberOfPlayers = 10) {
+export function table (numberOfPlayers = 3) {
   // Skapa spelare
   const players = []
 
@@ -29,35 +29,34 @@ export function table (numberOfPlayers = 10) {
 
   // Låt alla spelare spela
   for (const player of players) {
-    let score = ''
+    let winner = ''
     do {
       player.drawCard(drawPile, throwPile)
     } while (player.valueOfHand() < player.stopValue && player.hand.length < 5)
     if (player.valueOfHand() === 21 || (player.valueOfHand() < 21 && player.hand.length === 5)) {
-      // Konkatenera spelaren och dealers namn, hand och handens värde samt utrop av vinnaren med strängen score
-      score = `${player.toString()}\n${dealer.toString()}\n${player.name} wins!\n`
+      winner = player.name
     } else if (player.valueOfHand() > 21) {
-      score = `${player.toString()}\n${dealer.toString()}\n${dealer.name} wins!\n`
+      winner = dealer.name
     } else {
       // Nu ska dealern spela mot spelaren
       do {
         dealer.drawCard(drawPile, throwPile)
       } while (dealer.valueOfHand() < dealer.stopValue && dealer.hand.length < 5)
       if (dealer.valueOfHand() === 21 || (dealer.valueOfHand() < 21 && dealer.hand.length === 5)) {
-        score = `${player.toString()}\n${dealer.toString()}\n${dealer.name} wins!\n`
+        winner = dealer.name
       } else if (dealer.valueOfHand() > 21) {
-        score = `${player.toString()}\n${dealer.toString()}\n${player.name} wins!\n`
+        winner = player.name
       } else {
         if (dealer.valueOfHand() >= player.valueOfHand()) {
-          score = `${player.toString()}\n${dealer.toString()}\n${dealer.name} wins!\n`
+          winner = dealer.name
         } else {
-          score = `${player.toString()}\n${dealer.toString()}\n${player.name} wins!\n`
+          winner = player.name
         }
       }
     }
 
     // Visa resultatet för delomgången
-    console.log(score)
+    console.log(`${player.toString()}\n${dealer.toString()}\n${winner} wins!\n`)
 
     // Spelaren och dealern slänger de kort de har på handen
     player.throwCards(throwPile)
