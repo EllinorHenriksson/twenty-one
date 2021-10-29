@@ -3,7 +3,11 @@ import { Deck } from './Deck.js'
 
 // Sätt igång spelet
 
-export function table (numberOfPlayers = 3) {
+export function table (numberOfPlayers) {
+  // Kasta undantag
+  if ((!Number.isInteger(numberOfPlayers) || numberOfPlayers < 1 || numberOfPlayers > 7) && (numberOfPlayers !== 20 && numberOfPlayers !== 50)) {
+    throw new Error('Not a valid number of players')
+  }
   // Skapa spelare
   const players = []
 

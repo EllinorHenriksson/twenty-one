@@ -44,4 +44,17 @@ const argument = argumentArray[0]
 
 import { table } from './table.js'
 
-table()
+const myArgs = process.argv.slice(2)
+let numberOfPlayers
+
+if (myArgs.length === 0) {
+  numberOfPlayers = 3
+} else {
+  numberOfPlayers = Number(myArgs)
+}
+
+try {
+  table(numberOfPlayers)
+} catch (e) {
+  console.error(e.message)
+}
