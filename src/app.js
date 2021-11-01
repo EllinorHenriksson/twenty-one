@@ -39,6 +39,7 @@ try {
 // Egen kod
 
 import { table } from './table.js'
+import { PlayerError } from './PlayerError.js'
 import { CardError } from './CardError.js'
 
 const myArgs = process.argv.slice(2)
@@ -54,9 +55,14 @@ try {
   table(numberOfPlayers)
 } catch (e) {
   console.error(e.message)
-  process.exitCode = 26
+
+  if (e instanceof PlayerError) {
+    process.exitCode = 26
+  }
 
   if (e instanceof CardError) {
     process.exitCode = 27
   }
+
+  process.exitCode = 1
 }

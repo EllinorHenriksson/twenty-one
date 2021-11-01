@@ -1,14 +1,12 @@
 import { Participant } from './Participant.js'
 import { Deck } from './Deck.js'
-
-// Sätt igång spelet
+import { PlayerError } from './PlayerError.js'
 
 export function table (numberOfPlayers) {
-  // Kasta undantag
   if ((!Number.isInteger(numberOfPlayers) || numberOfPlayers < 1 || numberOfPlayers > 7) && (numberOfPlayers !== 20 && numberOfPlayers !== 50)) {
-    throw new Error('Not a valid number of players')
+    throw new PlayerError('Not a valid number of players')
   }
-  // Skapa spelare
+
   const players = []
 
   for (let i = 0; i < numberOfPlayers; i++) {
@@ -16,33 +14,32 @@ export function table (numberOfPlayers) {
     players[i] = new Participant(name)
   }
 
-  // Skapa dealer
   const dealer = new Participant('Dealer')
 
-  // Skapa och blanda draghög
   const drawPile = Deck.create()
   Deck.shuffle(drawPile)
 
-  // Skapa en slänghög
   const throwPile = []
 
-  // Ge alla spelare ett kort
+  // Players get one playing card each
   for (const player of players) {
     player.drawCard(drawPile, throwPile)
   }
 
-  // Låt alla spelare spela
+  // Players play in turn
   for (const player of players) {
     let winner = ''
+
     do {
       player.drawCard(drawPile, throwPile)
     } while (player.valueOfHand() < player.stopValue && player.hand.length < 5)
+
     if (player.valueOfHand() === 21 || (player.valueOfHand() < 21 && player.hand.length === 5)) {
       winner = player.name
     } else if (player.valueOfHand() > 21) {
       winner = dealer.name
     } else {
-      // Nu ska dealern spela mot spelaren
+      // Dealer plays against player
       do {
         dealer.drawCard(drawPile, throwPile)
       } while (dealer.valueOfHand() < dealer.stopValue && dealer.hand.length < 5)
@@ -59,10 +56,9 @@ export function table (numberOfPlayers) {
       }
     }
 
-    // Visa resultatet för delomgången
+    // Show score
     console.log(`${player.toString()}\n${dealer.toString()}\n${winner} wins!\n`)
 
-    // Spelaren och dealern slänger de kort de har på handen
     player.throwCards(throwPile)
     dealer.throwCards(throwPile)
   }
