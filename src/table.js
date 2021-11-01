@@ -1,7 +1,19 @@
+/**
+ * Module for the function table.
+ *
+ * @author Ellinor Henriksson <eh224kr@student.lnu.se>
+ * @version 1.0.0
+ */
+
 import { Participant } from './Participant.js'
 import { Deck } from './Deck.js'
 import { PlayerError } from './PlayerError.js'
 
+/**
+ * Sets up the card game and executes a playing round.
+ *
+ * @param {number} numberOfPlayers - The number of players.
+ */
 export function table (numberOfPlayers) {
   if ((!Number.isInteger(numberOfPlayers) || numberOfPlayers < 1 || numberOfPlayers > 7) && (numberOfPlayers !== 20 && numberOfPlayers !== 50)) {
     throw new PlayerError('Not a valid number of players')
@@ -63,27 +75,3 @@ export function table (numberOfPlayers) {
     dealer.throwCards(throwPile)
   }
 }
-
-// -------------------------------------------
-/*
-// Spelare (objekt instansierat från klass). Ska ha ett namn, en hand (array) och ett stoppvärde. Ska kunna dra kort från draghögen. Ska kunna slänga korten på handen i slänghögen. Presenteras i en array med spelare.
-const players = []
-
-for (let i = 0; i < numberOfPlayers; i++) {
-  const name = `Player ${i + 1}`
-  players[i] = new Participant(name)
-}
-
-// Giv (objekt instansierat från klass). Ska ha ett namn, en hand (array) och ett stoppvärde. Ska kunna dra kort från draghögen. Ska kunna slänga korten på handen i slänghögen.
-
-const dealer = new Participant('Dealer')
-
-// Draghög (array innehållande objekt representerande spelkort). Ska skapas vid spelets början och blandas. Ska ta emot korten i slänghögen när det endast finns 1 kort kvar och sedan blandas på nytt.
-const drawPile = Deck.create()
-
-Deck.shuffle(drawPile)
-
-// Slänghög (array som initialt är tom men fylls på med objekt representerande spelkort)
-
-const throwPile = []
-*/
