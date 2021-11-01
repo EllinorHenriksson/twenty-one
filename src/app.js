@@ -58,11 +58,9 @@ try {
 
   if (e instanceof PlayerError) {
     process.exitCode = 26
-  }
-
-  if (e instanceof CardError) {
+  } else if (e instanceof CardError) {
     process.exitCode = 27
+  } else {
+    process.exitCode = 1
   }
-
-  process.exitCode = 1
 }
