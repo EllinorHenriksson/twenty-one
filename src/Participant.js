@@ -22,7 +22,7 @@ export class Participant {
   #name
 
   /**
-   * The participant's hand, represented by an arry of PlayingCard objects.
+   * The participant's hand.
    *
    * @type {object[]}
    */
@@ -39,11 +39,13 @@ export class Participant {
    * Creates a Participant instance that represents a player or dealer.
    *
    * @param {string} name - The participant's name.
+   * @property {object[]} hand - The participant's hand, represented by an arry of PlayingCard objects.
+   * @property {number} stopValue - A random number between 8 and 15.
    */
   constructor (name) {
     this.name = name
     this.#hand = []
-    this.#stopValue = Math.floor(Math.random() * 21) + 1
+    this.#stopValue = Math.floor(Math.random() * 8 + 8)
   }
 
   /**

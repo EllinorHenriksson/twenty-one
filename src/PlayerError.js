@@ -15,6 +15,7 @@ export class PlayerError extends Error {
    * Creates an instance of PlayerError.
    *
    * @param {string} message - The error message.
+   * @property {string} name - The error's name.
    */
   constructor (message) {
     super(message)

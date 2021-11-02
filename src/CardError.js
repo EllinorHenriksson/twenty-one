@@ -15,6 +15,7 @@ export class CardError extends Error {
    * Creates an instance of CardError.
    *
    * @param {string} message - The error message.
+   * @property {string} name - The error's name.
    */
   constructor (message) {
     super(message)
