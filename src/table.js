@@ -1,6 +1,7 @@
 /**
  * Module for the function table.
  *
+ * @module src/table
  * @author Ellinor Henriksson <eh224kr@student.lnu.se>
  * @version 1.0.0
  */
@@ -13,6 +14,7 @@ import { PlayerError } from './PlayerError.js'
  * Sets up the card game and executes a playing round.
  *
  * @param {number} numberOfPlayers - The number of players.
+ * @throws {PlayerError} The parameter numberOfPlayers must be an integer between 1 and 7 or be 20 or 50.
  */
 export function table (numberOfPlayers) {
   if ((!Number.isInteger(numberOfPlayers) || numberOfPlayers < 1 || numberOfPlayers > 7) && (numberOfPlayers !== 20 && numberOfPlayers !== 50)) {

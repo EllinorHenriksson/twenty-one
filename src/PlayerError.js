@@ -1,6 +1,7 @@
 /**
  * Module for the type PlayerError.
  *
+ * @module src/PlayerError
  * @author Ellinor Henriksson <eh224kr@student.lnu.se>
  * @version 1.0.0
  */

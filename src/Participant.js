@@ -1,6 +1,7 @@
 /**
  * Module for the type Participant.
  *
+ * @module src/Participant
  * @author Ellinor Henriksson <eh224kr@student.lnu.se>
  * @version 1.0.0
  */
@@ -61,6 +62,7 @@ export class Participant {
    * Sets the name of the participant.
    *
    * @param {string} value - The participant's name.
+   * @throws {TypeError} The parameter value must be a string.
    */
   set name (value) {
     if (typeof value !== 'string') {
@@ -93,6 +95,7 @@ export class Participant {
    *
    * @param {object[]} drawPile - The draw pile to draw cards from (an array of PlayingCard objects).
    * @param {object[]} throwPile - The throw pile to move cards from if needed (an array of PlayingCard objects).
+   * @throws {CardError} The parameter throwPile must contain one or more cards.
    */
   drawCard (drawPile, throwPile) {
     if (drawPile.length === 1) {

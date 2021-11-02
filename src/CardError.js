@@ -1,6 +1,7 @@
 /**
  * Module for the type CardError.
  *
+ * @module src/CardError
  * @author Ellinor Henriksson <eh224kr@student.lnu.se>
  * @version 1.0.0
  */
